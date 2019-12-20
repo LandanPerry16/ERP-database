@@ -1,0 +1,393 @@
+SELECT *
+FROM wholesellers;
+SELECT *
+FROM customordercustomers;
+SELECT *
+FROM ORDERS;
+SELECT *
+FROM customproducts;
+SELECT *
+FROM SUPPLIER;
+SELECT *
+FROM PART;
+SELECT *
+FROM supply_order;
+SELECT *
+FROM INVENTORY;
+SELECT *
+FROM EMPLOYEE;
+SELECT *
+FROM massproducedproducts;
+SELECT *
+FROM outsourcedproduction;
+SELECT *
+FROM partlist;
+SELECT *
+FROM inhouseproduction;
+SELECT *
+FROM custom_part_list;
+SELECT *
+FROM DIVISION;
+
+RESULTS;
+
+
+SELLERID   PHONENUM   NAME       ADDRESS                   PRODUCTTYPE              
+---------- ---------- ---------- ------------------------- -------------------------
+SLR01      8439914300 MetalRUs   331 Steel Road            Metals                   
+SLR02      9437752634 NickNack   221 Nack street           variety                  
+SLR03      1112223344 JoeJoes    111 Joe Dirt Road         Screws                   
+SLR04      8754442783 theWorks   334 Working Way           Hinges                   
+SLR05      9991234545 Creators   754 create street         Strips                   
+SLR06      9119119911 FastStuff  911 Speeding Road         variety                  
+SLR07      4444448899 Corperate  721 Corp Money Road       Office                   
+SLR08      9876541234 Utility    678 util drive            Industry                 
+SLR09      0010010001 Cheapos    099 Cheap Street          CheapVar                 
+SLR10      9999999990 HiPrice    999 Pricey Road           Premium                  
+SLR11      3113213311 LowPrice   111 Lowest Road           ExtraVar                 
+
+SELLERID   PHONENUM   NAME       ADDRESS                   PRODUCTTYPE              
+---------- ---------- ---------- ------------------------- -------------------------
+SLR12      9018374653 LotOStuff  838 Stuff Drive           BulkMetal                
+SLR13      0102214921 HardCore   121 Cored Street          Blades                   
+SLR14      5745516038 SellBuy    224 Big Mall Drive        SmParts                  
+SLR15      3779320011 BIGBOX     775 Boxy Drive            BigParts                 
+
+15 rows selected. 
+
+
+CUSTOMCUST NAME                      PHONENUM     CUSTOMIZATIONCHOICE            REASONFORCUSOMTIZATION         NUMBEROFORDERS ADDRESS                       
+---------- ------------------------- ------------ ------------------------------ ------------------------------ -------------- ------------------------------
+CUS01      John                      8473891122   length change                  To make longer                              2 444 john road                 
+CUS02      Bill                      0019928833   width change                   to make wider                               5 111 Bill drive                
+CUS03      James                     3894758833   add 2 buttons                  increase inputs/control                     3 222 James street              
+CUS04      Doug                      6674435648   remove movement                keep static                                 2 456 Doug Ave                  
+CUS05      Peyton                    8394753678   add lateral movement           need to most sideways                       7 990 Peyton Lane               
+CUS06      Amber                     9382138475   add adjustable height          use variety of sizes                        7 212 Amber Road                
+CUS07      Cassie                    8675423456   increase power                 increase production                         7 345 Cassie Road               
+CUS08      Alex                      0378968064   use carbon fiber               light and strong                            2 932 Alex Lane                 
+CUS09      Alexa                     9997778888   take off paint                 Peels/ugly                                  1 101 Amazon street             
+CUS10      Dan                       0030071234   increase scale x3              X-large project                             1 987 Dandy Street              
+CUS11      Lisa                      9988997689   detachable parts               easy changes                                1 112 Lisa Drive                
+
+CUSTOMCUST NAME                      PHONENUM     CUSTOMIZATIONCHOICE            REASONFORCUSOMTIZATION         NUMBEROFORDERS ADDRESS                       
+---------- ------------------------- ------------ ------------------------------ ------------------------------ -------------- ------------------------------
+CUS12      Lily                      9027990811   add vaccum                     quick cleanup                               4 115 Lily Lane                 
+CUS13      Lorelle                   6667773655   combine products               2 in 1 function                             4 444 Lorelle Street            
+CUS14      Liam                      0578783443   self destruct                  Emergencys                                  8 141 Liam Lane                 
+CUS15      Levi                      5746609986   Diamond blades                 Cut anything                                8 909 Levi Ave                  
+
+15 rows selected. 
+
+
+ORDERID    EMPLOYEEID ORDERDATE PAYMENT    SHIPPINGADDRESS           DIVISIONID SELLERID   CUSTOMCUST
+---------- ---------- --------- ---------- ------------------------- ---------- ---------- ----------
+ORD13      COH76      07-SEP-19 Credit     456 Doug Ave              IN4        SLR12      CUS04     
+ORD14      COH76      19-SEP-19 Credit     111 Bill drive            IN3        SLR14      CUS02     
+ORD01      LDP12      11-NOV-19 Credit     444 john road             IN2        SLR14      CUS01     
+ORD02      LDP12      10-MAR-18 Cash       444 john road             IN2        SLR02      CUS01     
+ORD03      LDP12      07-JUL-17 Check      909 Levi Ave              IN2        SLR06      CUS15     
+ORD04      DRP21      13-JAN-19 Credit     909 Levi Ave              IN1        SLR02      CUS15     
+ORD05      DRP21      16-MAR-19 Check      909 Levi Ave              IN1        SLR14      CUS15     
+ORD06      LMD50      21-OCT-19 Check      909 Levi Ave              IN3        SLR06      CUS15     
+ORD07      CCS15      11-OCT-19 Check      112 Lisa Drive            IN6        SLR09      CUS11     
+ORD08      DDR11      15-JUL-19 Cash       101 Amazon street         OUT2       SLR14      CUS09     
+ORD09      DDR11      06-JUN-18 Cash       345 Cassie Road           OUT2       SLR12      CUS07     
+
+ORDERID    EMPLOYEEID ORDERDATE PAYMENT    SHIPPINGADDRESS           DIVISIONID SELLERID   CUSTOMCUST
+---------- ---------- --------- ---------- ------------------------- ---------- ---------- ----------
+ORD10      JAR07      22-AUG-19 Credit     345 Cassie Road           OUT2       SLR14      CUS07     
+ORD11      SAG99      04-AUG-19 Check      345 Cassie Road           OUT3       SLR02      CUS07     
+ORD12      JJJ22      23-JUL-19 Check      456 Doug Ave              OUT3       SLR12      CUS04     
+ORD15      JJJ22      01-NOV-19 Check      111 Bill drive            IN3        SLR12      CUS02     
+
+15 rows selected. 
+
+
+CUSTOMORDE NAME                      TIMETOCOMPLETE DESCRIPTION               STEPSTOCUSTOMIZE          LABORHOURS DIVISIONID PLANTID    CUSTOMCUST
+---------- ------------------------- -------------- ------------------------- ------------------------- ---------- ---------- ---------- ----------
+COR1       REM MOVE                             2.5 STOPS MOVEMENT            Remove wheels                      4 IN2        Plant10    CUS04     
+COR3       D-BLADES                               4 Diamond Blade install     solder diamonds to part            7 IN1        Plant1     CUS15     
+COR4       D-BLADES                               4 Diamond Blade install     solder diamonds to part            7 IN1        Plant1     CUS15     
+COR5       D-BLADES                               4 Diamond Blade install     solder diamonds to part            7 IN1        Plant1     CUS15     
+COR6       D-BLADES                               4 Diamond Blade install     solder diamonds to part            7 IN1        Plant1     CUS15     
+COR7       SCALE INC                           4.45 Increase scale product    triple all measurements            6 IN2        Plant10    CUS10     
+COR8       SELF DEST                           3.45 BLOWS PART UP             Attach bomb with remote           10 IN4        Plant4     CUS14     
+COR9       SELF DEST                           3.45 BLOWS PART UP             Attach bomb with remote           10 IN4        Plant4     CUS14     
+COR10      SELF DEST                           3.45 BLOWS PART UP             Attach bomb with remote           10 IN4        Plant4     CUS14     
+COR11      CARBFIBER                              1 CARBON FIBER PRODUCT      PRODUCE WITH CARBONFIBER           3 IN5        Plant5     CUS08     
+COR12      CARBFIBER                              1 CARBON FIBER PRODUCT      PRODUCE WITH CARBONFIBER           3 IN5        Plant5     CUS08     
+
+CUSTOMORDE NAME                      TIMETOCOMPLETE DESCRIPTION               STEPSTOCUSTOMIZE          LABORHOURS DIVISIONID PLANTID    CUSTOMCUST
+---------- ------------------------- -------------- ------------------------- ------------------------- ---------- ---------- ---------- ----------
+COR13      VACCUM                              7.05 ADDS A VACUM              ATTACH VACUMM SYSTEM               9 IN3        Plant6     CUS12     
+COR14      VACCUM                              7.05 ADDS A VACUM              ATTACH VACUMM SYSTEM               9 IN3        Plant6     CUS12     
+COR15      DETACHABLE                             5 Parts are detachable      Replace weld with clips            6 IN1        Plant13    CUS11     
+COR2       REM MOVE                             2.5 STOPS MOVEMENT            Remove wheels                      4 IN2        Plant10    CUS04     
+
+15 rows selected. 
+
+
+SUPPLIERID CONTACT                   ADDRESS                   MATERIALSOFFERED          CONTRACTPRESENT          
+---------- ------------------------- ------------------------- ------------------------- -------------------------
+CE35       218-351-4853              20 WEST PALM DRIVE        ALUMINUM                  1                        
+SA05       354-538-3456              2014 FOREST HILL DRIVE    GRANITE                   1                        
+YU73       330-245-2456              589 TAILWIND COURT        PVC                       0                        
+SP83       853-358-2457              5489 OLSON AVENUE         STRING                    1                        
+XH35       352-546-1393              45 TAKATA PARKWAY         ZIPPERS                   0                        
+AS78       385-248-2858              589 N. 85TH STREET        FLANNEL                   0                        
+RF03       654-358-5495              6482 OPENVIEW DRIVE       GOLD                      1                        
+YC38       845-658-8659              78 WRIGLEY ROAD           9-IN SCREENS              1                        
+XY39       477-359-2459              43 HOLEBROOKE WAY         TIN                       1                        
+AK93       894-237-2748              389 CASPER DRIVE          PAINT                     0                        
+SS38       954-247-3758              87 SHELBY DRIVE           PENS                      1                        
+
+SUPPLIERID CONTACT                   ADDRESS                   MATERIALSOFFERED          CONTRACTPRESENT          
+---------- ------------------------- ------------------------- ------------------------- -------------------------
+ZK35       621-132-1358              4980 S. RAIL STREET       TAPE                      1                        
+OP37       278-428-8276              429 INDIANA AVENUE        KNIVES                    0                        
+DT92       263-875-4533              2823 6TH STREET           COPPER                    0                        
+RW26       489-358-3472              46 BROOKE HILL AVENUE     ZINC                      1                        
+
+15 rows selected. 
+
+
+SUPPLIERID PARTNAME                  PARTTYPE                  DESCRIPTION                                    COST
+---------- ------------------------- ------------------------- ---------------------------------------- ----------
+SA05       TTI BASE                  BASE                      22-IN BASE OF STAND                           38.38
+DT92       TWI PIPE                  PIPE                      12-IN PIPE FOR LIQUIDS TO FLOW THROUGH        18.85
+RW26       FI SPRING                 SPRING                    4-IN SPRING FOR SHOCKS                          .54
+CE35       ALUMINUM FACE PLATE       NAME PLATE                10"X10" NAME PLATE                            13.45
+XH35       TEI ZIPPER                ZIPPER                    28-IN BLACK ZIPPER                             1.57
+YC38       NI SCREEN                 SCREEN                    9-IN DISPLAY SCREENS                          55.39
+RW26       SI SPRING                 SPRING                    6-IN SPRING FOR SHOCKS                          .84
+SA05       FI BASE                   BASE                      40-IN BASE OF STAND                           89.34
+XY39       LARGE BACK PLATE          BACK PLATE                30"X24" BACK PLATE                            21.48
+XY39       MEDUIM BACK PLATE         BACK PLATE                22"X16" BACK PLATE                            15.33
+XY39       SCREW                                               3-IN SCREW                                      .19
+
+SUPPLIERID PARTNAME                  PARTTYPE                  DESCRIPTION                                    COST
+---------- ------------------------- ------------------------- ---------------------------------------- ----------
+RF03       GOLD FACE PLATE           NAME PLATE                GOLD                                          35.21
+YU73       TI PIPE                   PIPE                      2-IN PIPE                                      3.48
+AS78       INNER COVER               COVER                     48"X36" TARP                                  14.98
+CE35       EI LID                    LID                       8-IN ALUMINUM LID                              2.12
+
+15 rows selected. 
+
+
+SUPPLYORDE SUPPLIERID PARTNAME                  PARTREQUIRED              DATEORDER PRICE      PARTID      TOTALCOST
+---------- ---------- ------------------------- ------------------------- --------- ---------- ---------- ----------
+0023829347 AS78       INNER COVER               20                        21-SEP-19 14.98      SRE4559867      299.6
+0034782645 CE35       EI LID                    100                       05-MAY-19 2.12       YRB5678798        212
+0034892762 SA05       TTI BASE                  12                        23-MAY-19 384.38     TUV8976543    4612.56
+0029817368 DT92       TWI PIPE                  32                        30-JUN-19 18.85      BNG7898092      603.2
+0023849625 RW26       FI SPRING                 97                        31-JUL-19 0.54       NBC4657687      52.38
+0009849376 XH35       TEI ZIPPER                26                        08-JAN-19 1.57       YFG5768723      40.82
+0034092788 XY39       LARGE BACK PLATE          25                        27-OCT-19 21.48      HDG4657687        537
+0057849286 YU73       TI PIPE                   67                        01-MAY-19 3.48       DFJ4345424     233.16
+0047816987 AS78       INNER COVER               20                        28-FEB-19 14.98      YRB5678798      299.6
+0087654679 RW26       FI SPRING                 97                        13-APR-19 0.54       NBC4657687      52.38
+0078673267 CE35       ALUMINUM FACE PLATE       15                        02-NOV-19 13.45      VGF4656732     201.75
+
+SUPPLYORDE SUPPLIERID PARTNAME                  PARTREQUIRED              DATEORDER PRICE      PARTID      TOTALCOST
+---------- ---------- ------------------------- ------------------------- --------- ---------- ---------- ----------
+0023788678 XY39       SCREW                     225                       15-JAN-19 0.19       CFJ5768799      42.75
+0098978699 YC38       NI SCREEN                 21                        06-JUL-19 55.39      GHF6756423    1163.19
+0098878686 RW26       SI SPRING                 74                        19-MAY-19 0.84       BNV6756487      62.16
+0036778483 RF03       GOLD FACE PLATE           50                        14-DEC-18 350.21     VJG5345465     1510.5
+
+15 rows selected. 
+
+
+PARTID     DIVISIONID STOCKLEVEL REORDERLEV
+---------- ---------- ---------- ----------
+SRE4559867 IN1        24         15        
+YRB5678798 OUT3       20         10        
+TUV8976543 OUT3       2          5         
+BNG7898092 OUT1       72         50        
+NBC4657687 IN1        19         15        
+YFG5768723 IN1        26         25        
+HDG4657687 OUT4       28         20        
+DFJ4345424 OUT2       85         60        
+JHG6756453 IN3        68         35        
+RDY4556876 IN2        56         40        
+VGF4656732 IN5        17         15        
+
+PARTID     DIVISIONID STOCKLEVEL REORDERLEV
+---------- ---------- ---------- ----------
+CFJ5768799 IN4        78         55        
+GHF6756423 IN3        98         50        
+VJG5345465 OUT5       132        45        
+BNV6756487 IN4        78         30        
+
+15 rows selected. 
+
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+COH76      Cole       Hams       09-JAN-16 $42000     IN1        444 Big Rock Road         Plymouth   IN              46563              3
+LDP12      Landan     Perry      07-JUL-14 $45000     IN2        426 Saint Clair Court     Warsaw     IN              46582              5
+LDL17      Leytan     Dale       11-MAR-16 $33000     IN1        375 Old Orchard Drive     Wawassee   IN              46580              3
+JJJ22      John       James      07-AUG-12 $25000     OUT3       876 West Count Street     Cowtuck    OH              84753              7
+KCC11      Kevin      Close      19-JUL-15 $60000     OUT1       965 Disney Drive          Orlando    FL              74340              4
+DRP21      Derek      Paz        01-DEC-10 $90000     IN1        756 Southside Drive       Goshen     IN              46577              9
+CCS15      Cameron    Smith      14-JAN-18 $45000     OUT1       777 Deep Forest Road      TreeTown   WA              99734              1
+BRC01      Brad       Cooper     22-JUL-12 $64000     IN2        333 Lake Placid Drive     Warsaw     IN              46582              7
+LMD50      Lance      Dean       28-JUL-09 $100000    IN3        682 Center Street         Warcity    IN              46589             10
+DDR11      David      Rapper     13-NOV-16 $22000     OUT2       388 Dusty Road            Tippton    KY              97954              3
+SAG99      Steve      Games      18-SEP-14 $55000     OUT3       734 Cavs center street    Cleveland  OH              44101              5
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+SAA55      Scott      Ashley     15-FEB-15 $70000     IN3        553 N. Colts Road         Indy       IN              46201              4
+JAR07      Jack       Rau        04-JUL-13 $60000     OUT2       259 longranch drive       Austin     TX              83592              6
+EGM21      Erin       Murray     30-MAR-17 $100000    IN2        456 Gates Road            Seattle    WA              98102              2
+GRD55      Grace      Dunker     14-MAY-12 $70000     OUT2       777 Soccer Street         Dallas     TX              87463              7
+
+15 rows selected. 
+
+
+DIVISIONID PRODUCTID  DESCRIPTIONS                   TIMETOCOMP MATERIALS                      LABORHOURS OUTSOURCEI
+---------- ---------- ------------------------------ ---------- ------------------------------ ---------- ----------
+OUT2       BB-2       Ball-bearing Sz 2              6 hours    Steel                                   2 OTS-2     
+OUT2       BB-3       Ball-bearing Sz 3              6 hours    Steel                                   2 OTS-7     
+OUT4       SB-1       Steel Beam Sz 1                2 hours    Steel                                   1 OTS-11    
+OUT4       SB-2       Steel Beam Sz 2                3 hours    Steel                                   2 OTS-13    
+OUT4       SB-3       Steel Beam Sz 3                4 hours    Steel                                   3 OTS-13    
+OUT3       GR-1       GEAR Sz 1                      6 hours    Steel                                   2 OTS-10    
+OUT3       GR-2       GEAR Sz 2                      6 hours    Steel                                   2 OTS-4     
+OUT3       GR-3       GEAR Sz 3                      6 hours    Steel                                   2 OTS-3     
+OUT1       P-1        Piston Sz 1                    6 hours    Steel                                   2 OTS-5     
+OUT1       P-2        Piston Sz 2                    6 hours    Steel                                   2 OTS-6     
+OUT1       P-3        Piston Sz 3                    6 hours    Steel                                   2 OTS-14    
+
+DIVISIONID PRODUCTID  DESCRIPTIONS                   TIMETOCOMP MATERIALS                      LABORHOURS OUTSOURCEI
+---------- ---------- ------------------------------ ---------- ------------------------------ ---------- ----------
+OUT5       V-1        Valve Sz 1                     6 hours    Steel                                   2 OTS-9     
+OUT5       V-2        Valve Sz 2                     6 hours    Steel                                   2 OTS-12    
+OUT5       V-3        Valve Sz 3                     6 hours    Steel                                   2 OTS-9     
+
+14 rows selected. 
+
+
+OUTSOURCEI DIVISIONID COUNTRY         CONTACT                   PARTNERSHIPTYPE           CURRENTLYP
+---------- ---------- --------------- ------------------------- ------------------------- ----------
+OTS-1      OUT1       China           Rick Saw                  True                      Quaterly  
+OTS-2      OUT2       China           Terry Bea                 True                      Quaterly  
+OTS-3      OUT3       Ireland         Larry Res                 True                      Yearly    
+OTS-4      OUT3       Ireland         Mary Kek                  True                      Yearly    
+OTS-5      OUT1       Ireland         Larry Bird                True                      Yearly    
+OTS-6      OUT1       Ireland         David toe                 True                      Yearly    
+OTS-7      OUT2       China           Jack Foe                  True                      Monthly   
+OTS-8      OUT6       China           Harris Doe                True                      Yearly    
+OTS-9      OUT5       Ireland         Hank Boz                  True                      Yearly    
+OTS-10     OUT3       Ireland         Eric Nom                  True                      Yearly    
+OTS-11     OUT4       China           Deric Gren                True                      Yearly    
+
+OUTSOURCEI DIVISIONID COUNTRY         CONTACT                   PARTNERSHIPTYPE           CURRENTLYP
+---------- ---------- --------------- ------------------------- ------------------------- ----------
+OTS-12     OUT5       Ireland         Frank Loh                 True                      Bi-Yearly 
+OTS-13     OUT4       China           Jill eers                 True                      Bi-Yearly 
+OTS-14     OUT1       Ireland         Harry Ort                 True                      Yearly    
+OTS-15     OUT2       China           Jey Kim                   True                      Yearly    
+
+15 rows selected. 
+
+
+PARTS_REQ                 PARTID     DIVISIONID NUMBEROFPARTS OUTSOURCEI PRODUCTID 
+------------------------- ---------- ---------- ------------- ---------- ----------
+LID                       BNG7898092 OUT1                  20 OTS-5      P-1       
+EI LID                    YRB5678798 OUT3                   5 OTS-10     GR-1      
+TTI BASE                  TUV8976543 OUT3                  10 OTS-10     GR-1      
+EI LID                    YRB5678798 OUT3                  10 OTS-4      GR-2      
+LID                       TUV8976543 OUT3                  20 OTS-4      GR-2      
+SI SPRING                 BNV6756423 OUT1                  20 OTS-5      P-1       
+LID                       BNG7898092 OUT1                  40 OTS-6      P-2       
+SI SPRING                 BNV6756487 OUT1                  40 OTS-6      P-2       
+Back PLate                HDG4657687 OUT4                  20 OTS-11     SB-1      
+INNER COVER               YRB5678798 OUT4                  11 OTS-11     SB-1      
+INNER COVER               SRE4559867 OUT4                   7 OTS-11     SB-1      
+
+PARTS_REQ                 PARTID     DIVISIONID NUMBEROFPARTS OUTSOURCEI PRODUCTID 
+------------------------- ---------- ---------- ------------- ---------- ----------
+Back PLate                HDG4657687 OUT4                  40 OTS-13     SB-2      
+INNER COVER               YRB5678798 OUT4                  22 OTS-13     SB-2      
+INNER COVER               SRE4559867 OUT4                  14 OTS-13     SB-2      
+Back PLate                HDG4657687 OUT4                  60 OTS-13     SB-3      
+INNER COVER               YRB5678798 OUT4                  33 OTS-13     SB-3      
+
+16 rows selected. 
+
+
+DIVISIONID PLANTID    CONTACT                   ADDRESS                   NUMBERPROJECTS DEVELOPMENTSPECIALTY      NUMBEREMPLOYEES
+---------- ---------- ------------------------- ------------------------- -------------- ------------------------- ---------------
+IN1        Plant1     Jeff Chery                406 Littleton St                      90 Metal Arms                             54
+IN1        Plant2     Dirk Dome                 406 Littleton St                      90 Metal Arms                             54
+IN1        Plant3     Sara Moore                406 Littleton St                      80 Metal Gear                             60
+IN4        Plant4     Tara Fore                 406 Littleton St                      71 Metal Beam                             81
+IN5        Plant5     Farah Core                407 Littleton St                      60 Bearings                               32
+IN3        Plant6     Felix Meop                407 Littleton St                      93 Bolts                                  62
+IN1        Plant7     Tim Mack                  406 Littleton St                      60 Aluminum                               38
+IN2        Plant8     Nate train                407 Littleton St                      82 Steel work                             45
+IN3        Plant9     Sara Moore                406 Littleton St                      87 Welding                                63
+IN2        Plant10    Landan Per                407 Littleton St                      88 Design                                 40
+IN1        Plant11    Alex Turn                 406 Littleton St                      62 Wood work                              43
+
+DIVISIONID PLANTID    CONTACT                   ADDRESS                   NUMBERPROJECTS DEVELOPMENTSPECIALTY      NUMBEREMPLOYEES
+---------- ---------- ------------------------- ------------------------- -------------- ------------------------- ---------------
+IN3        Plant12    Kevin Peq                 408 Littleton St                      75 Electric                               62
+IN1        Plant13    Kyle Mue                  406 Littleton St                      43 Wiring                                 51
+IN1        Plant14    Heinz Doof                406 Littleton St                      62 Copper                                 33
+IN2        Plant15    Pubby Long                406 Littleton St                      95 Gold                                   83
+
+15 rows selected. 
+
+
+CUSTOMORDE PARTS_REQUIRED            PARTID     NUMBEROFPARTSUSED
+---------- ------------------------- ---------- -----------------
+COR8       SI SPRING                 BNV6756487                 2
+COR8       TEI ZIPPER                YFG5768723                 8
+COR8       TTI BASE                  TUV8976543                 1
+COR3       GOLD PLATE                VJG5345465                 5
+COR3       TEI ZIPPER                YFG5768723                 2
+COR3       NI SCREEN                 GHF6756423                 1
+COR3       SCREW                     CFJ5768799                 4
+COR2       TTI BASE                  TUV8976543                 5
+COR2       ALUMINUM FACE PLATE       VGF4656732                 1
+COR2       INNER COVER               SRE4559867                 1
+COR11      SCREW                     CFJ5768799                15
+
+CUSTOMORDE PARTS_REQUIRED            PARTID     NUMBEROFPARTSUSED
+---------- ------------------------- ---------- -----------------
+COR11      LARGE BACK PLATE          HDG4657687                 7
+COR15      TWI PIPE                  BNG7898092                 2
+COR15      TEI ZIPPER                YFG5768723                 3
+COR15      FI SPRING                 NBC4657687                 4
+
+15 rows selected. 
+
+
+DIVISIONID ADDRESS                        CITY       STATE                         BUDGET
+---------- ------------------------------ ---------- ------------------------- ----------
+IN1        406 Littleton St               Anagola    IN                              4000
+IN2        407 Littleton St               Anagola    IN                              4000
+IN3        408 Littleton St               Anagola    IN                              4000
+IN4        409 Littleton St               Anagola    IN                              4000
+IN5        410 Littleton St               Anagola    IN                              4000
+IN6        416 MAIN St                    Lafayette  IN                              3500
+OUT1       310 W Fowler                   Lafayette  IN                              3500
+OUT2       311 W Fowler                   Lafayette  IN                              3500
+OUT3       311 MAIN St                    Lafayette  IN                              3500
+OUT4       312 MAIN St                    Lafayette  IN                              3500
+OUT5       313 MAIN St                    Lafayette  IN                              3500
+
+DIVISIONID ADDRESS                        CITY       STATE                         BUDGET
+---------- ------------------------------ ---------- ------------------------- ----------
+OUT6       314 MAIN St                    Lafayette  IN                              3500
+EME        205 8th St                     Lafayette  IN                              3500
+ECS        400 12th St                    Lafayette  IN                              3500
+CES        400 Memorial Mall              W Lafayete IN                              3500
+
+15 rows selected. 
+

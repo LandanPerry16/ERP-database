@@ -1,0 +1,864 @@
+********************************************************************************************************
+Question 1. 
+Person: Nathan Gronowski; Backup: Landan Perry
+
+SQL Statement:
+SELECT employeeid, lastname, state
+FROM employee
+WHERE state IN ('IN');
+
+Results:
+EMPLOYEEID LASTNAME   STATE     
+---------- ---------- ----------
+LDP12      Perry      IN        
+LDL17      Dale       IN        
+DRP21      Paz        IN        
+BRC01      Cooper     IN        
+LMD50      Dean       IN        
+COH76      Hams       IN        
+SAA55      Ashley     IN        
+
+7 rows selected.
+
+--------------------------------------------------------
+********************************************************************************************************
+Question 2.
+Person: Nathan Gronowski; Backup: Derek Paz
+
+SQL Statement:
+SELECT employeeid, firstname, lastname, hiredate
+FROM employee
+WHERE hiredate BETWEEN '01-JAN-17' AND '31-DEC-18';
+
+Results:
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE 
+---------- ---------- ---------- ---------
+CCS15      Cameron    Smith      14-JAN-18
+EGM21      Erin       Murray     30-MAR-17
+
+--------------------------------------------------------
+********************************************************************************************************
+Question 3.
+Person: Nathan Gronowski; Backup: Derek Paz
+
+SQL Statement:
+SELECT *
+FROM inventory
+WHERE partid LIKE 'B%';
+
+Results:
+PARTID                    DIVISIONID STOCKLEVEL REORDERLEV
+------------------------- ---------- ---------- ----------
+BNG7898092                OUT1       72         50        
+BNV6756487                OUT5       78         30       
+ 
+--------------------------------------------------------
+********************************************************************************************************
+Question 4. 
+Person: Derek Paz; Backup: Jimmy McDermed
+SQL Statement: 
+SELECT partrequired * PRICE AS TOTAL_PRICE
+FROM SUPPLY_ORDER;
+
+
+Results: 
+TOTAL_PRICE
+-----------
+      299.6
+        212
+    4612.56
+      603.2
+      52.38
+      40.82
+        537
+     233.16
+      299.6
+      52.38
+     201.75
+
+TOTAL_PRICE
+-----------
+      42.75
+    1163.19
+    17510.5
+      62.16
+
+15 rows selected. 
+
+********************************************************************************************************
+Question 5.
+Person: Nathan Gronowski; Backup: Landan Perry
+
+SQL Statement:
+SELECT *
+FROM outsourcedproduction
+WHERE country NOT IN 'China';
+
+Results:
+OUTSOURCEI DIVISIONID COUNTRY    CONTACT    CURRENTLYP PARTNERSHIPTYPE          
+---------- ---------- ---------- ---------- ---------- -------------------------
+OTS-3      OUT3       Ireland    Larry Res  True       Yearly                   
+OTS-4      OUT3       Ireland    Mary Kek   True       Yearly                   
+OTS-5      OUT1       Ireland    Larry Bird True       Yearly                   
+OTS-6      OUT1       Ireland    David toe  True       Yearly                   
+OTS-9      OUT5       Ireland    Hank Boz   True       Yearly                   
+OTS-10     OUT3       Ireland    Eric Nom   True       Yearly                   
+OTS-12     OUT5       Ireland    Frank Loh  True       Bi-Yearly                
+OTS-14     OUT1       Ireland    Harry Ort  True       Yearly                   
+
+8 rows selected. 
+
+--------------------------------------------------------
+********************************************************************************************************
+Question 6.
+Person: Nathan Gronowski; Backup: Jimmy McDermed
+
+SQL Statement:
+SELECT employeeid, firstname, lastname, NVL(division, '***') AS "DIVISION"
+FROM employee;
+
+Results:
+EMPLOYEEID FIRSTNAME  LASTNAME   DIVISION  
+---------- ---------- ---------- ----------
+LDP12      Landan     Perry      IN2       
+LDL17      Leytan     Dale       IN1       
+JJJ22      John       James      OUT3      
+KCC11      Kevin      Close      OUT1      
+DRP21      Derek      Paz        IN1       
+CCS15      Cameron    Smith      OUT1      
+BRC01      Brad       Cooper     IN2       
+LMD50      Lance      Dean       ***       
+DDR11      David      Rapper     OUT2      
+SAG99      Steve      Games      OUT3      
+JAR07      Jack       Rau        OUT2      
+
+EMPLOYEEID FIRSTNAME  LASTNAME   DIVISION  
+---------- ---------- ---------- ----------
+EGM21      Erin       Murray     IN2       
+GRD55      Grace      Dunker     ***       
+COH76      Cole       Hams       IN1       
+SAA55      Scott      Ashley     IN3       
+
+15 rows selected. 
+
+--------------------------------------------------------
+********************************************************************************************************
+Question 7.
+Person: Nathan Gronowski; Backup: Landan Perry
+
+SQL Statement:
+SELECT employeeid, firstname, lastname, hiredate
+FROM employee
+ORDER BY hiredate;
+
+Results:
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE 
+---------- ---------- ---------- ---------
+LMD50      Lance      Dean       28-JUL-09
+DRP21      Derek      Paz        01-DEC-10
+GRD55      Grace      Dunker     14-MAY-12
+BRC01      Brad       Cooper     22-JUL-12
+JJJ22      John       James      07-AUG-12
+JAR07      Jack       Rau        04-JUL-13
+LDP12      Landan     Perry      07-JUL-14
+SAG99      Steve      Games      18-SEP-14
+SAA55      Scott      Ashley     15-FEB-15
+KCC11      Kevin      Close      19-JUL-15
+COH76      Cole       Hams       09-JAN-16
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE 
+---------- ---------- ---------- ---------
+LDL17      Leytan     Dale       11-MAR-16
+DDR11      David      Rapper     13-NOV-16
+EGM21      Erin       Murray     30-MAR-17
+CCS15      Cameron    Smith      14-JAN-18
+
+15 rows selected. 
+
+********************************************************************************************************
+Question 8 
+Person: Derek Paz; Backup: Jimmy McDermed
+Sql Statement:
+
+select parts_required, count(parts_required) as NUMBER_TIMES_PART_USED
+from custom_part_list 
+where parts_required = 'TEI ZIPPER'
+GROUP by parts_required;
+
+Results: 
+
+PARTS_REQU NUMBER_TIMES_PART_USED
+---------- ----------------------
+TEI ZIPPER                      3
+
+********************************************************************************************************
+Question 9 
+Person: Derek Paz; Backup: Jimmy McDermed
+Sql Statement:
+
+SELECT SUM(partrequired * PRICE) AS TOTAL_ORDER
+FROM SUPPLY_ORDER;
+
+Results: 
+
+TOTAL_ORDER
+-----------
+   25923.05
+
+********************************************************************************************************
+Question 10 
+Person: Derek Paz; Backup: Jimmy McDermed
+Sql Statement: 
+SELECT AVG(COST) AS PRICE_AVG, PARTTYPE
+FROM PART 
+GROUP BY PARTTYPE; 
+
+Results: 
+
+ PRICE_AVG PARTTYPE                 
+---------- -------------------------
+      1.57 ZIPPER                   
+       .69 SPRING                   
+      2.12 LID                      
+     13.45 NAME PLATE               
+     35.21 4"X2" NAMING PLATE       
+    11.165 PIPE                     
+     63.86 BASE                     
+     14.98 COVER                    
+    18.405 BACK PLATE               
+     55.39 SCREEN                   
+       .19 3-IN SCREW               
+
+11 rows selected. 
+
+********************************************************************************************************
+Question 11 
+Person: Derek Paz; Backup: Jimmy McDermed
+Sql Statement:
+
+SELECT AVG(COST) AS PRICE_AVG, PARTTYPE
+FROM PART 
+GROUP BY PARTTYPE
+HAVING PARTTYPE = 'PIPE'; 
+
+Results: 
+
+ PRICE_AVG PARTTYPE                 
+---------- -------------------------
+    11.165 PIPE                     
+
+********************************************************************************************************
+Question 12 
+Person: Derek Paz; Backup: Jimmy McDermed
+Sql Statement: 
+
+SELECT PARTID, AVG(STOCKLEVEL), DIVISIONID
+FROM INVENTORY
+WHERE divisionid LIKE '%IN%'
+GROUP BY PARTID, DIVISIONID
+HAVING partid LIKE '%V%';
+
+Results:
+
+PARTID                    AVG(STOCKLEVEL) DIVISIONID
+------------------------- --------------- ----------
+VJG5345465                            132 IN3       
+VGF4656732                             17 IN2       
+
+********************************************************************************************************
+Question 13 
+Person: Derek Paz; Backup: Jimmy McDermed
+Sql Statement:
+
+SELECT SUPPLIER.SUPPLIERID, PARTNAME, supply_order.partrequired
+FROM SUPPLIER INNER JOIN SUPPLY_ORDER ON supplier.supplierid = supply_order.supplierid
+WHERE supplier.contractpresent = 1 AND PARTREQUIRED > 30; 
+
+Results: 
+
+SUPPLIERID PARTNAME                  PARTREQUIRED        
+---------- ------------------------- --------------------
+CE35       EI LID                    100                 
+RW26       FI SPRING                 97                  
+RW26       FI SPRING                 97                  
+XY39       SCREW                     225                 
+RF03       GOLD FACE PLATE           50                  
+RW26       SI SPRING                 74                  
+
+6 rows selected. 
+
+********************************************************************************************************
+Question 14:
+
+Sql Statement:
+
+Select Orders.EmployeeID, Division.DivisionID, to_char(hiredate, 'DAY,FMMONTH dd,yyyy') as hiredate, Wholesellers.SellerID
+From Employee Inner Join Orders On Employee.EmployeeID = Orders.EmployeeID
+Inner Join Division On Orders.DivisionID = Division.DivisionID
+Inner Join Wholesellers on Wholesellers.SellerID = Orders.SellerID; 
+Person: Steven Salgado; Backup: Nathan Gronowski
+
+Results: 
+LDP12	IN2	MONDAY   ,JULY 7,2014	SLR14
+LDP12	IN2	MONDAY   ,JULY 7,2014	SLR02
+LDP12	IN2	MONDAY   ,JULY 7,2014	SLR06
+DRP21	IN1	WEDNESDAY,DECEMBER 1,2010	SLR02
+DRP21	IN1	WEDNESDAY,DECEMBER 1,2010	SLR14
+LMD50	IN3	TUESDAY  ,JULY 28,2009	SLR06
+CCS15	IN6	SUNDAY   ,JANUARY 14,2018	SLR09
+DDR11	OUT2	SUNDAY   ,NOVEMBER 13,2016	SLR14
+DDR11	OUT2	SUNDAY   ,NOVEMBER 13,2016	SLR12
+JAR07	OUT2	THURSDAY ,JULY 4,2013	SLR14
+SAG99	OUT3	THURSDAY ,SEPTEMBER 18,2014	SLR02
+JJJ22	OUT3	TUESDAY  ,AUGUST 7,2012	SLR12
+COH76	IN4	SATURDAY ,JANUARY 9,2016	SLR12
+COH76	IN3	SATURDAY ,JANUARY 9,2016	SLR14
+JJJ22	IN3	TUESDAY  ,AUGUST 7,2012	SLR12
+
+********************************************************************************************************
+Question 15
+Sql Statement: 
+
+Select DivisionID, Address, City, State, Budget
+From Division
+Where Budget Not In
+(Select Budget From Division Where DivisionID ='IN3');
+
+Person: Steven Salgado; Backup: Nathan Gronowski
+
+Results:
+
+DIVISIONID ADDRESS                   CITY       STATE          BUDGET
+---------- ------------------------- ---------- ---------- ----------
+IN6        416 MAIN St               Anagola    IN               4500
+EME        205 8th St                Lafayette  IN               9000
+ECS        400 12th St               Lafayette  IN               9000
+CES        400 Memorial Mall         W Lafayete IN               9000
+OUT1       310 W Fowler              Anagola    IN               3000
+OUT2       311 W Fowler              Anagola    IN               3000
+OUT3       311 Main St               Lafayette  IN               3000
+OUT4       312 Main St               Lafayette  IN               3000
+OUT5       313 Main St               Lafayette  IN               3000
+OUT6       314 Main St               Lafayette  IN               3500
+
+10 rows selected.  
+
+********************************************************************************************************
+Question 16 
+Sql Statement:
+Select DivisionID, Address, City, State, Budget
+From Division
+Where Budget >
+(Select Avg(Budget) From Division);
+Person: Steven Salgado; Backup: Nathan Gronowski
+
+Results: 
+
+DIVISIONID ADDRESS                   CITY       STATE          BUDGET
+---------- ------------------------- ---------- ---------- ----------
+EME        205 8th St                Lafayette  IN               9000
+ECS        400 12th St               Lafayette  IN               9000
+CES        400 Memorial Mall         W Lafayete IN               9000
+********************************************************************************************************
+Question 17 
+Sql Statement: 
+
+Select Orders.EmployeeID, Sum(Salary * .05) as Holiday Bonus
+From Employee Inner Join Orders On Employee.EmployeeID = Orders.EmployeeID
+GroupBy Orders.EmployeeID
+Having Sum(Salary * .05) as Holiday Bonus;
+
+Person: Steven Salgado; Backup: Nathan Gronowski
+Results:
+
+
+DIVISIONID ADDRESS                   CITY       STATE          BUDGET
+---------- ------------------------- ---------- ---------- ----------
+IN6        416 MAIN St               Anagola    IN               4500
+EME        205 8th St                Lafayette  IN               9000
+ECS        400 12th St               Lafayette  IN               9000
+CES        400 Memorial Mall         W Lafayete IN               9000
+OUT1       310 W Fowler              Anagola    IN               3000
+OUT2       311 W Fowler              Anagola    IN               3000
+OUT3       311 Main St               Lafayette  IN               3000
+OUT4       312 Main St               Lafayette  IN               3000
+OUT5       313 Main St               Lafayette  IN               3000
+OUT6       314 Main St               Lafayette  IN               3500
+
+10 rows selected. 
+
+******************************************************************************************************** 
+Question 18
+Sql Statement:
+
+Select Division.DivisionID, Address, City, State
+From Division Left Join InHouseProduction
+On Division.DivisionID = InHouseProduction.DivisionID;
+
+Person: Steven Salgado; Backup: Nathan Gronowski
+
+Results: 
+DIVISIONID ADDRESS                   CITY       STATE     
+---------- ------------------------- ---------- ----------
+CES                                  W Lafayete IN        
+ECS                                  Lafayette  IN        
+EME                                  Lafayette  IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN2        406 Littleton St          Anagola    IN        
+
+DIVISIONID ADDRESS                   CITY       STATE     
+---------- ------------------------- ---------- ----------
+IN2        406 Littleton St          Anagola    IN        
+IN2        407 Littleton St          Anagola    IN        
+IN2        407 Littleton St          Anagola    IN        
+IN3        408 Littleton St          Anagola    IN        
+IN3        408 Littleton St          Anagola    IN        
+IN3        406 Littleton St          Anagola    IN        
+IN3        407 Littleton St          Anagola    IN        
+IN4        406 Littleton St          Anagola    IN        
+IN5        407 Littleton St          Anagola    IN        
+IN6        407 Littleton St          Anagola    IN        
+IN6        406 Littleton St          Anagola    IN        
+
+DIVISIONID ADDRESS                   CITY       STATE     
+---------- ------------------------- ---------- ----------
+OUT1                                 Anagola    IN        
+OUT2                                 Anagola    IN        
+OUT3                                 Lafayette  IN        
+OUT4                                 Lafayette  IN        
+OUT5                                 Lafayette  IN        
+OUT6                                 Lafayette  IN        
+
+28 rows selected. 
+
+********************************************************************************************************
+Question 19
+Sql Statement:
+
+Select Division.DivisionID, Address, City, State
+From Division Right Join InHouseProduction
+On Division.DivisionID = InHouseProduction.DivisionID;
+
+Person: Steven Salgado; Backup: Nathan Gronowski
+
+Results: 
+DIVISIONID ADDRESS                   CITY       STATE     
+---------- ------------------------- ---------- ----------
+IN3        407 Littleton St          Anagola    IN        
+IN3        406 Littleton St          Anagola    IN        
+IN3        408 Littleton St          Anagola    IN        
+IN3        408 Littleton St          Anagola    IN        
+IN2        406 Littleton St          Anagola    IN        
+IN2        407 Littleton St          Anagola    IN        
+IN2        407 Littleton St          Anagola    IN        
+IN2        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+
+DIVISIONID ADDRESS                   CITY       STATE     
+---------- ------------------------- ---------- ----------
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN1        406 Littleton St          Anagola    IN        
+IN4        406 Littleton St          Anagola    IN        
+IN5        407 Littleton St          Anagola    IN        
+IN6        407 Littleton St          Anagola    IN        
+IN6        406 Littleton St          Anagola    IN        
+
+19 rows selected. 
+
+********************************************************************************************************
+Question 20 
+
+Sql Statement:
+select sellerid
+from wholesellers
+union
+select sellerid
+from orders
+    
+Person: Jimmy McDermed; Backup: Landan Perry
+Results: 
+SELLERID  
+----------
+SLR01
+SLR02
+SLR03
+SLR04
+SLR05
+SLR06
+SLR07
+SLR08
+SLR09
+SLR10
+SLR11
+
+SELLERID  
+----------
+SLR12
+SLR13
+SLR14
+SLR15
+SLR16
+SLR17
+
+17 rows selected. 
+
+********************************************************************************************************
+Question 21
+
+Sql Statement:
+select sellerid
+from wholesellers
+intersect
+select sellerid
+from orders
+
+Person: Jimmy McDermed; Backup: Landan Perry
+Results: 
+SELLERID  
+----------
+SLR02
+SLR06
+SLR09
+SLR12
+SLR14
+
+********************************************************************************************************
+Question 22
+Before Update:
+SLR03      1112223344 JoeJoes                   111 Joe Dirt Road         Screws
+Sql Statement:
+update wholesellers
+    set phonenum = '2512516251'
+    where name = 'JoeJoes';
+
+After Update:
+SELLERID   PHONENUM   NAME                      ADDRESS                   PRODUCTTYPE              
+---------- ---------- ------------------------- ------------------------- -------------------------
+SLR03      2512516251 JoeJoes                   111 Joe Dirt Road         Screws                   
+
+Person: Derek Paz; Backup: Jimmy McDermed
+The Wholesaler changed there phone number so the record needed to be updated.
+
+********************************************************************************************************
+Question 23 
+SELLERID   PHONENUM   NAME                      ADDRESS                   PRODUCTTYPE              
+---------- ---------- ------------------------- ------------------------- -------------------------
+SLR03      2512516251 JoeJoes                   111 Joe Dirt Road         Screws                   
+SLR13      0102214921 HardCore                  121 Cored Street          Blades                   
+
+Sql Statement:
+update wholesellers
+    set producttype = 'Stands'
+    where name = 'JoeJoes' or name = 'HardCore'
+
+SELLERID   PHONENUM   NAME                      ADDRESS                   PRODUCTTYPE              
+---------- ---------- ------------------------- ------------------------- -------------------------
+SLR03      2512516251 JoeJoes                   111 Joe Dirt Road         Stands                   
+SLR13      0102214921 HardCore                  121 Cored Street          Stands                   
+
+Person: Jimmy McDermed; Backup: Landan Perry
+
+Both the wholesellers JoeJoes and HardCore changed their product type to stands so both the records
+needed to be updated
+
+********************************************************************************************************
+Question 24 
+Before update:
+SELLERID   PHONENUM   NAME                      ADDRESS                   PRODUCTTYPE              
+---------- ---------- ------------------------- ------------------------- -------------------------
+SLR15      3779320011 BigBox                    775 Boxy Drive            BigParts                 
+SLR14      5745516038 SellBuy                   224 Big Mall Drive        SmParts                  
+SLR01      8439914300 MetalRUs                  331 Steel Road            Metals                   
+SLR02      9437752634 NickNack                  221 Nack street           variety                  
+SLR03      1112223344 JoeJoes                   111 Joe Dirt Road         Screws                   
+SLR04      8754442783 theWorks                  334 Working Way           Hinges                   
+SLR05      9991234545 Creators                  754 create street         Strips                   
+SLR06      9119119911 FastStuff                 911 Speeding Road         variety                  
+SLR07      4444448899 Corperate                 721 Corp Money Road       Office                   
+SLR08      9876541234 Utility                   678 util drive            Industry                 
+SLR09      0010010001 Cheapos                   099 Cheap Street          CheapVar                 
+
+SELLERID   PHONENUM   NAME                      ADDRESS                   PRODUCTTYPE              
+---------- ---------- ------------------------- ------------------------- -------------------------
+SLR10      9999999990 HiPrice                   999 Pricey Road           Premium                  
+SLR11      3113213311 LowPrice                  111 Lowest Road           ExtraVar                 
+SLR12      9018374653 LotOStuff                 838 Stuff Drive           BulkMetal                
+SLR13      0102214921 HardCore                  121 Cored Street          Blades                   
+
+15 rows selected. 
+
+insert into wholesellers
+    values ('SLR16','7732025862', 'Green Dolphin', '541 Green Street', 'Stands');
+insert into wholesellers
+    values ('SLR17', '8005882300', 'Run Inc.', '800 Luck Land St.', 'SteelBalls');
+
+SELLERID   PHONENUM   NAME                      ADDRESS                   PRODUCTTYPE              
+---------- ---------- ------------------------- ------------------------- -------------------------
+SLR16      7732025862 Green Dolphin             541 Green Street          Stands                   
+SLR17      8005882300 Run Inc.                  800 Luck Land St.         SteelBalls               
+SLR15      3779320011 BigBox                    775 Boxy Drive            BigParts                 
+SLR14      5745516038 SellBuy                   224 Big Mall Drive        SmParts                  
+SLR01      8439914300 MetalRUs                  331 Steel Road            Metals                   
+SLR02      9437752634 NickNack                  221 Nack street           variety                  
+SLR03      2512516251 JoeJoes                   111 Joe Dirt Road         Stands                   
+SLR04      8754442783 theWorks                  334 Working Way           Hinges                   
+SLR05      9991234545 Creators                  754 create street         Strips                   
+SLR06      9119119911 FastStuff                 911 Speeding Road         variety                  
+SLR07      4444448899 Corperate                 721 Corp Money Road       Office                   
+
+SELLERID   PHONENUM   NAME                      ADDRESS                   PRODUCTTYPE              
+---------- ---------- ------------------------- ------------------------- -------------------------
+SLR08      9876541234 Utility                   678 util drive            Industry                 
+SLR09      0010010001 Cheapos                   099 Cheap Street          CheapVar                 
+SLR10      9999999990 HiPrice                   999 Pricey Road           Premium                  
+SLR11      3113213311 LowPrice                  111 Lowest Road           ExtraVar                 
+SLR12      9018374653 LotOStuff                 838 Stuff Drive           BulkMetal                
+SLR13      0102214921 HardCore                  121 Cored Street          Stands                   
+
+17 rows selected. 
+Person: Jimmy McDermed; Backup: Landan Perry
+Two companies needed to be added to the data base to an insert command need to be implamented.
+
+********************************************************************************************************
+Question 25
+Person: Landan Perry; Backup: Derek Paz
+Sql Statement: 
+SELECT * from employee;
+Delete from employee
+where employeeid = 'SAA55';
+SELECT * from employee;
+
+
+Before: SELECT * from employee;
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+LDP12      Landan     Perry      07-JUL-14 $45000     IN2        426 Saint Clair Court     Warsaw     IN              46582              5
+LDL17      Leytan     Dale       11-MAR-16 $33000     IN1        375 Old Orchard Drive     Wawassee   IN              46580              3
+JJJ22      John       James      07-AUG-12 $25000     OUT3       876 West Count Street     Cowtuck    OH              84753              7
+KCC11      Kevin      Close      19-JUL-15 $60000     OUT1       965 Disney Drive          Orlando    FL              74340              4
+DRP21      Derek      Paz        01-DEC-10 $90000     IN1        756 Southside Drive       Goshen     IN              46577              9
+CCS15      Cameron    Smith      14-JAN-18 $45000     OUT1       777 Deep Forest Road      TreeTown   WA              99734              1
+BRC01      Brad       Cooper     22-JUL-12 $64000     IN2        333 Lake Placid Drive     Warsaw     IN              46582              7
+LMD50      Lance      Dean       28-JUL-09 $100000               682 Center Street         Warcity    IN              46589             10
+DDR11      David      Rapper     13-NOV-16 $22000     OUT2       388 Dusty Road            Tippton    KY              97954              3
+SAG99      Steve      Games      18-SEP-14 $55000     OUT3       734 Cavs center street    Cleveland  OH              44101              5
+JAR07      Jack       Rau        04-JUL-13 $60000     OUT2       259 longranch drive       Austin     TX              83592              6
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+EGM21      Erin       Murray     30-MAR-17 $100000    IN2        456 Gates Road            Seattle    WA              98102              2
+GRD55      Grace      Dunker     14-MAY-12 $70000                777 Soccer Street         Dallas     TX              87463              7
+COH76      Cole       Hams       09-JAN-16 $42000     IN1        444 Big Rock Road         Plymouth   IN              46563              3
+SAA55      Scott      Ashley     15-FEB-15 $70000     IN3        553 N. Colts Road         Indy       IN              46201              4
+
+15 rows selected. 
+
+AFTER: 
+Delete from employee
+where employeeid = 'SAA55';
+
+1 row deleted.
+SELECT * from employee;
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+LDP12      Landan     Perry      07-JUL-14 $45000     IN2        426 Saint Clair Court     Warsaw     IN              46582              5
+LDL17      Leytan     Dale       11-MAR-16 $33000     IN1        375 Old Orchard Drive     Wawassee   IN              46580              3
+JJJ22      John       James      07-AUG-12 $25000     OUT3       876 West Count Street     Cowtuck    OH              84753              7
+KCC11      Kevin      Close      19-JUL-15 $60000     OUT1       965 Disney Drive          Orlando    FL              74340              4
+DRP21      Derek      Paz        01-DEC-10 $90000     IN1        756 Southside Drive       Goshen     IN              46577              9
+CCS15      Cameron    Smith      14-JAN-18 $45000     OUT1       777 Deep Forest Road      TreeTown   WA              99734              1
+BRC01      Brad       Cooper     22-JUL-12 $64000     IN2        333 Lake Placid Drive     Warsaw     IN              46582              7
+LMD50      Lance      Dean       28-JUL-09 $100000               682 Center Street         Warcity    IN              46589             10
+DDR11      David      Rapper     13-NOV-16 $22000     OUT2       388 Dusty Road            Tippton    KY              97954              3
+SAG99      Steve      Games      18-SEP-14 $55000     OUT3       734 Cavs center street    Cleveland  OH              44101              5
+JAR07      Jack       Rau        04-JUL-13 $60000     OUT2       259 longranch drive       Austin     TX              83592              6
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+EGM21      Erin       Murray     30-MAR-17 $100000    IN2        456 Gates Road            Seattle    WA              98102              2
+GRD55      Grace      Dunker     14-MAY-12 $70000                777 Soccer Street         Dallas     TX              87463              7
+COH76      Cole       Hams       09-JAN-16 $42000     IN1        444 Big Rock Road         Plymouth   IN              46563              3
+
+14 rows selected. 
+
+Explain: Deleted because the employee had now orders, used a simple Delete from table statement.  
+
+    
+********************************************************************************************************
+Results: 
+Question 26
+Person: Landan Perry; Backup: Derek Paz
+Sql Statement: 
+
+Before: 
+Name       Null?    Type         
+---------- -------- ------------ 
+DIVISIONID NOT NULL VARCHAR2(10) 
+ADDRESS             VARCHAR2(25) 
+CITY                CHAR(10)     
+STATE               CHAR(10)     
+BUDGET              NUMBER(6,2) 
+
+After:
+Table DIVISION altered.
+
+Name           Null?    Type         
+-------------- -------- ------------ 
+DIVISIONID     NOT NULL VARCHAR2(10) 
+ADDRESS                 VARCHAR2(25) 
+CITY                    CHAR(10)     
+STATE                   CHAR(10)     
+BUDGET                  NUMBER(6,2)  
+TOTALEMPLOYEES          NUMBER(6,2)  
+
+Explain: Added a total employee number for division to see the size of the division. Used an alter table statement.
+
+********************************************************************************************************
+Results: 
+Question 27 
+Person: Landan Perry; Backup: Derek Paz
+Sql Statement: update division set totalemployees = 55;
+Before:
+DIVISIONID ADDRESS                   CITY       STATE          BUDGET TOTALEMPLOYEES
+---------- ------------------------- ---------- ---------- ---------- --------------
+IN3        408 Littleton St          Anagola    IN               4000               
+IN2        407 Littleton St          Anagola    IN               4000               
+IN1        406 Littleton St          Anagola    IN               4000               
+IN4        409 Littleton St          Anagola    IN               4000               
+IN5        410 Littleton St          Anagola    IN               4000               
+OUT1       310 W Fowler              Anagola    IN               3000               
+OUT2       311 W Fowler              Anagola    IN               3000               
+OUT3       311 Main St               Lafayette  IN               3000               
+OUT4       312 Main St               Lafayette  IN               3000               
+OUT5       313 Main St               Lafayette  IN               3000               
+EME        205 8th St                Lafayette  IN               9000               
+
+DIVISIONID ADDRESS                   CITY       STATE          BUDGET TOTALEMPLOYEES
+---------- ------------------------- ---------- ---------- ---------- --------------
+ECS        400 12th St               Lafayette  IN               9000               
+CES        400 Memorial Mall         W Lafayete IN               9000               
+OUT6       314 Main St               Lafayette  IN               3500               
+IN6        416 MAIN St               Anagola    IN               4500               
+
+15 rows selected. 
+
+After: 
+15 rows updated.
+
+
+DIVISIONID ADDRESS                   CITY       STATE          BUDGET TOTALEMPLOYEES
+---------- ------------------------- ---------- ---------- ---------- --------------
+IN3        408 Littleton St          Anagola    IN               4000             55
+IN2        407 Littleton St          Anagola    IN               4000             55
+IN1        406 Littleton St          Anagola    IN               4000             55
+IN4        409 Littleton St          Anagola    IN               4000             55
+IN5        410 Littleton St          Anagola    IN               4000             55
+OUT1       310 W Fowler              Anagola    IN               3000             55
+OUT2       311 W Fowler              Anagola    IN               3000             55
+OUT3       311 Main St               Lafayette  IN               3000             55
+OUT4       312 Main St               Lafayette  IN               3000             55
+OUT5       313 Main St               Lafayette  IN               3000             55
+EME        205 8th St                Lafayette  IN               9000             55
+
+DIVISIONID ADDRESS                   CITY       STATE          BUDGET TOTALEMPLOYEES
+---------- ------------------------- ---------- ---------- ---------- --------------
+ECS        400 12th St               Lafayette  IN               9000             55
+CES        400 Memorial Mall         W Lafayete IN               9000             55
+OUT6       314 Main St               Lafayette  IN               3500             55
+IN6        416 MAIN St               Anagola    IN               4500             55
+
+15 rows selected. 
+
+Explain: updated all divisions to have 55 employees, used an update statement.
+
+********************************************************************************************************
+Results: 
+Question 28 
+Person: Landan Perry; Backup: Derek Paz
+Sql Statement: 
+update employee set lastname =  SUBSTR(lastname ,0,3)
+where lastname = 'Murray';
+Results: 
+Before
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+EGM21      Erin       Murray        30-MAR-17 $100000    IN2        456 Gates Road            Seattle    WA              98102              2
+
+
+After
+
+EMPLOYEEID FIRSTNAME  LASTNAME   HIREDATE  SALARY     DIVISION   ADDRESS                   CITY       STATE             ZIP YEARSATCOMPANY
+---------- ---------- ---------- --------- ---------- ---------- ------------------------- ---------- ---------- ---------- --------------
+EGM21      Erin       Mur        30-MAR-17 $100000    IN2        456 Gates Road            Seattle    WA              98102              2
+
+Explain: Last Named was shortned to how they abbreviate it. Used a simple set and subtring statement.
+
+
+
+
+********************************************************************************************************
+Question 29
+Person: Landan Perry; Backup: Derek Paz
+Sql Statement: 
+create unique index lastname_IX on employee (lastname);
+
+create index firstname_IX on employee (firstname);
+
+create view outview as Select * from employee;
+
+
+select view_name, owner
+from SYS.all_views
+where owner = 'PAZD'
+order by view_name;
+
+SELECT index_name, owner 
+FROM all_indexes
+where owner = 'PAZD' and index_name like '%IX%';
+
+
+Results: 
+
+Index LASTNAME_IX created.
+
+
+Index FIRSTNAME_IX created.
+
+
+View OUTVIEW created.
+
+VIEW_NAME                  OWNER                                                                                                                           
+-------------------------------------
+OUTVIEW                    PAZD                                                                                                                            
+
+
+INDEX_NAME                                                  OWNER                                                                                                                           
+--------------------------------------------------------------------------------------
+FIRSTNAME_IX                                                PAZD                                                                                                                            
+LASTNAME_IX        
+
+
+********************************************************************************************************
+Question 30
+Person: Landan Perry Backup: Derek Paz
+Sql Statement: 
+select lastname, salary from employee where lastname = 'Perry' or lastname = 'Paz';
+Results: 
+
+LASTNAME   SALARY    
+---------- ----------
+Perry      $45000    
+Paz        $90000
