@@ -1,0 +1,146 @@
+DESCRIBE wholesellers;
+DESCRIBE  customordercustomers;
+DESCRIBE  ORDERS;
+DESCRIBE customproducts;
+DESCRIBE  SUPPLIER;
+DESCRIBE  PART;
+DESCRIBE  supply_order;
+DESCRIBE  INVENTORY;
+DESCRIBE  EMPLOYEE;
+DESCRIBE  massproducedproducts;
+DESCRIBE  outsourcedproduction;
+DESCRIBE  partlist;
+DESCRIBE  inhouseproduction;
+DESCRIBE  custom_part_list;
+DESCRIBE  DIVISION;
+
+
+
+RESULTS:
+Name        Null?    Type         
+----------- -------- ------------ 
+SELLERID    NOT NULL VARCHAR2(10) 
+PHONENUM             VARCHAR2(10) 
+NAME                 CHAR(10)     
+ADDRESS              VARCHAR2(25) 
+PRODUCTTYPE          VARCHAR2(25) 
+Name                   Null?    Type         
+---------------------- -------- ------------ 
+CUSTOMCUSTOMERID       NOT NULL VARCHAR2(10) 
+NAME                            CHAR(25)     
+PHONENUM                        VARCHAR2(12) 
+CUSTOMIZATIONCHOICE             VARCHAR2(30) 
+REASONFORCUSOMTIZATION          VARCHAR2(30) 
+NUMBEROFORDERS                  NUMBER(6,2)  
+ADDRESS                         VARCHAR2(30) 
+Name             Null?    Type         
+---------------- -------- ------------ 
+ORDERID          NOT NULL VARCHAR2(10) 
+EMPLOYEEID                VARCHAR2(10) 
+ORDERDATE                 DATE         
+PAYMENT                   VARCHAR2(10) 
+SHIPPINGADDRESS           VARCHAR2(25) 
+DIVISIONID                VARCHAR2(10) 
+SELLERID                  VARCHAR2(10) 
+CUSTOMCUSTOMERID          VARCHAR2(10) 
+Name             Null?    Type         
+---------------- -------- ------------ 
+CUSTOMORDERID    NOT NULL VARCHAR2(10) 
+NAME                      CHAR(25)     
+TIMETOCOMPLETE            NUMBER(6,2)  
+DESCRIPTION               VARCHAR2(25) 
+STEPSTOCUSTOMIZE          VARCHAR2(25) 
+LABORHOURS                NUMBER(6,2)  
+DIVISIONID                VARCHAR2(10) 
+PLANTID                   VARCHAR2(10) 
+CUSTOMCUSTOMERID          VARCHAR2(10) 
+Name             Null?    Type         
+---------------- -------- ------------ 
+SUPPLIERID       NOT NULL VARCHAR2(10) 
+CONTACT                   VARCHAR2(25) 
+ADDRESS                   VARCHAR2(25) 
+MATERIALSOFFERED          VARCHAR2(25) 
+CONTRACTPRESENT           VARCHAR2(25) 
+Name        Null?    Type         
+----------- -------- ------------ 
+SUPPLIERID  NOT NULL VARCHAR2(10) 
+PARTNAME    NOT NULL CHAR(25)     
+PARTTYPE             VARCHAR2(25) 
+DESCRIPTION          VARCHAR2(40) 
+COST                 NUMBER(6,2)  
+Name          Null?    Type         
+------------- -------- ------------ 
+SUPPLYORDERID NOT NULL VARCHAR2(10) 
+SUPPLIERID             VARCHAR2(10) 
+PARTNAME               CHAR(25)     
+PARTREQUIRED           VARCHAR2(25) 
+DATEORDERED            DATE         
+PRICE                  VARCHAR2(10) 
+PARTID                 VARCHAR2(10) 
+TOTALCOST              NUMBER(6,2)  
+Name         Null?    Type         
+------------ -------- ------------ 
+PARTID       NOT NULL VARCHAR2(10) 
+DIVISIONID            VARCHAR2(10) 
+STOCKLEVEL            VARCHAR2(10) 
+REORDERLEVEL          VARCHAR2(10) 
+Name           Null?    Type         
+-------------- -------- ------------ 
+EMPLOYEEID     NOT NULL VARCHAR2(10) 
+FIRSTNAME               CHAR(10)     
+LASTNAME                CHAR(10)     
+HIREDATE                DATE         
+SALARY                  VARCHAR2(10) 
+DIVISION                CHAR(10)     
+ADDRESS                 VARCHAR2(25) 
+CITY                    CHAR(10)     
+STATE                   CHAR(10)     
+ZIP                     NUMBER(10)   
+YEARSATCOMPANY          NUMBER(6,2)  
+Name           Null?    Type         
+-------------- -------- ------------ 
+DIVISIONID     NOT NULL VARCHAR2(10) 
+PRODUCTID      NOT NULL VARCHAR2(10) 
+DESCRIPTIONS            VARCHAR2(30) 
+TIMETOCOMPLETE          VARCHAR2(10) 
+MATERIALS               VARCHAR2(30) 
+LABORHOURS              NUMBER(6,2)  
+OUTSOURCEID    NOT NULL VARCHAR2(10) 
+Name               Null?    Type         
+------------------ -------- ------------ 
+OUTSOURCEID        NOT NULL VARCHAR2(10) 
+DIVISIONID         NOT NULL VARCHAR2(10) 
+COUNTRY                     CHAR(15)     
+CONTACT                     CHAR(25)     
+PARTNERSHIPTYPE             VARCHAR2(25) 
+CURRENTLYPRODUCING          VARCHAR2(10) 
+Name          Null?    Type         
+------------- -------- ------------ 
+PARTS_REQ              VARCHAR2(25) 
+PARTID        NOT NULL VARCHAR2(10) 
+DIVISIONID    NOT NULL VARCHAR2(10) 
+NUMBEROFPARTS          NUMBER(6,2)  
+OUTSOURCEID   NOT NULL VARCHAR2(10) 
+PRODUCTID     NOT NULL VARCHAR2(10) 
+Name                 Null?    Type         
+-------------------- -------- ------------ 
+DIVISIONID           NOT NULL VARCHAR2(10) 
+PLANTID              NOT NULL VARCHAR2(10) 
+CONTACT                       CHAR(25)     
+ADDRESS                       VARCHAR2(25) 
+NUMBERPROJECTS                NUMBER(6,2)  
+DEVELOPMENTSPECIALTY          VARCHAR2(25) 
+NUMBEREMPLOYEES               NUMBER(6,2)  
+Name              Null?    Type         
+----------------- -------- ------------ 
+CUSTOMORDERID     NOT NULL VARCHAR2(10) 
+PARTS_REQUIRED             VARCHAR2(25) 
+PARTID            NOT NULL VARCHAR2(10) 
+NUMBEROFPARTSUSED          NUMBER(6,2)  
+Name       Null?    Type         
+---------- -------- ------------ 
+DIVISIONID NOT NULL VARCHAR2(10) 
+ADDRESS             VARCHAR2(30) 
+CITY                CHAR(10)     
+STATE               CHAR(25)     
+BUDGET              NUMBER(6,2)  
